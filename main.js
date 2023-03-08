@@ -10,7 +10,7 @@ function divide() {
 
   const resultValue = numeratorValue / denominatorValue;
 
-  result.innerHTML = resultValue;
+  result.innerHTML = parseFloat(resultValue.toPrecision(4)).toString();
 }
 
 body.addEventListener("keydown", (e) => {
