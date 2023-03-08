@@ -8,9 +8,23 @@ function divide() {
   const numeratorValue = parseFloat(numerator.value),
     denominatorValue = parseFloat(denominator.value);
 
-  const resultValue = numeratorValue / denominatorValue;
+  let errors = [];
 
-  result.innerHTML = parseFloat(resultValue.toPrecision(4)).toString();
+  if (isNaN(numeratorValue)) {
+    errors.push("numerator");
+  }
+
+  if (isNaN(denominatorValue)) {
+    errors.push("denominator");
+  }
+
+  if (errors.length === 0) {
+    const resultValue = numeratorValue / denominatorValue;
+
+    result.innerHTML = parseFloat(resultValue.toPrecision(4)).toString();
+  } else {
+    result.innerHTML = `Cannot parse ${errors.join(" and ")} as number.`;
+  }
 }
 
 body.addEventListener("keydown", (e) => {
